@@ -1,0 +1,44 @@
+<div class='container'>
+    <div class='row'>
+        <img class='col-lg-12' src='assets/img/bobsburgers.jpg'>  
+    </div>
+</div>
+
+<div class='container'>
+    <h1 class='mt-4 subheading'>Welcome to Bob's Burgers!</h1>            
+    <p class='subheading'>What burger would you like today?</p>
+    <form class='row'>
+        <input type="input" class="form-control col-lg-6 col-sm-6 ml-2 mr-2 create-form" id="burger_name" name="burger_name" aria-describedby="burgerInput" placeholder='Burger of the Day'>
+        <button type="submit" id="create-form" class="btn btn-danger col-lg-2 col-sm-2">ORDER</button>
+    </form>
+            
+    <hr>
+
+    <div class="mt-4 mb-5 row">
+        <ul class="list-group col-lg-8">
+            {{#each burgers}}
+                {{#unless order_up}}
+                <div class="row">
+                    <li class="list-group-item col-lg-8 col-sm-8 ml-2 mr-2 mb-2">{{burger_name}}</li> 
+                    <button type="button" class="btn btn-sm btn-outline-danger col-lg-2 col-sm-2 mb-2 change-order" data-id="{{id}}" data-neworder="{{order_up}}">ORDER UP</button>
+                {{!-- <div class='col-lg-2 col-sm-2'></div>   --}}
+                </div>
+                
+                {{/unless}}
+            {{/each}}
+        </ul>
+        
+
+        <ul class="list-group col-lg-4">
+            {{#each burgers}}
+                {{#if order_up}}
+                <div class="row">
+                    <li class="list-group-item disabled col-lg-12 col-sm-6 mb-2">{{burger_name}}</li> 
+                </div>
+                
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+    
+</div>
